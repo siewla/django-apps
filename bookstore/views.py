@@ -1,8 +1,10 @@
 from django.shortcuts import render
-
+from bookstore.forms import BookForm
 # Create your views here.
+
+
 def index(request):
-    # form = BookForm()
+    form = BookForm()
     # if request.method == 'POST':
     #     form = BookForm(request.POST, request.FILES)
     #     if form.is_valid():
@@ -10,4 +12,4 @@ def index(request):
     #         return redirect('books_index')
     # books = Book.objects.all()
     # context = {"form": form, "books": books}
-    return render(request, 'bookstore/index.html')
+    return render(request, 'bookstore/index.html', {"form": form})
