@@ -2,7 +2,7 @@
 {% block body %}
 <div class="container">
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-6 mt-10">
       {{book.title}}
       <a href={% url 'show' book.id %}?action=edit>Edit</a>
       <a href={% url 'show' book.id %}?action=del>Delete</a>
