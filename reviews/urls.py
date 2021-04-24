@@ -4,7 +4,7 @@ from .views import *
 app_name = 'reviews'
 
 urlpatterns = [
-    path('', index, name='index')
+    path('<uuid:book>/', create, name='create')
 ]
 
 # reviews:index
