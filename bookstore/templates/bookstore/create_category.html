@@ -1,0 +1,8 @@
+{% extends 'bookstore/layout.html' %}
+{% block body %}
+<form action="" method="post">
+    {% csrf_token %}
+    {{category_form }}
+    <button type="submit">Create</button>
+</form>
+{% endblock body %}

@@ -1,12 +1,17 @@
-{% extends 'bookstore/layout.html' %} 
+{% extends 'bookstore/layout.html' %}
 {% block body %}
 <div class="container">
   <div class="row">
     <div class="col-md-6">
-      <img src="{{book.cover.url}}" />
-      {{book.title}}
-      <a href={% url 'bookstore:show' book.id %}?action=edit>Edit</a>
-      <a href={% url 'bookstore:show' book.id %}?action=del>Delete</a>
+      <img src="{{book.cover.url}}" style="width:20rem" />
+      <h4>Title: {{book.title}}</h4>
+      <h4>Description: {{book.description}}</h5>
+        <h4>Categories</h3>
+          {% for cat in book.categories.all  %}
+          <li>{{cat.name}}</li>
+          {% endfor %}
+          <a href={% url 'bookstore:show' book.id %}?action=edit>Edit</a>
+          <a href={% url 'bookstore:show' book.id %}?action=del>Delete</a>
     </div>
     <div>
       <form action="{% url 'reviews:create' book.id %}" method="post">
@@ -14,16 +19,17 @@
         {{review_form}}
         <button type="submit">Submit</button>
       </form>
-       <div>
-          <h1>All Reviews</h1>
-            {% for review in book.reviews.all %}
-              <h4>Reviewer: {{review.name}}</h4>
-              {% comment %} <h5>Book Title:{{review.book.title}}</h5> {% endcomment %}
-              <h5>Review:{{review.review}}</h5>
-              {% comment %} <a href="{% url 'reviews:create' book.id %}?action=edit&pk={{review.id}}">Edit</a> {% endcomment %}
-              <a href="{% url 'reviews:create' book.id %}?action=del&pk={{review.id}}">Del</a>
-            {% endfor %}
-        </div>
+      <div>
+        <h1>All Reviews</h1>
+        {% for review in book.reviews.all %}
+        <h4>Reviewer: {{review.name}}</h4>
+        {% comment %} <h5>Book Title:{{review.book.title}}</h5> {% endcomment %}
+        <h5>Review:{{review.review}}</h5>
+        {% comment %} <a href="{% url 'reviews:create' book.id %}?action=edit&pk={{review.id}}">Edit</a>
+        {% endcomment %}
+        <a href="{% url 'reviews:create' book.id %}?action=del&pk={{review.id}}">Del</a>
+        {% endfor %}
+      </div>
     </div>
     {% if edit %}
     <div class="col-md-6">

@@ -3,7 +3,9 @@ from .models import *
 
 
 class BookForm(forms.ModelForm):
-    # cover = forms.FileField(widget=form)
+    categories = forms.ModelMultipleChoiceField(
+        queryset=Category.objects.all(), widget=forms.CheckboxSelectMultiple())
+
     class Meta:
         model = Book
         fields = '__all__'
@@ -31,5 +33,14 @@ class BookForm(forms.ModelForm):
             }),
             'cover': forms.FileInput(attrs={
                 'class': 'form-control',
-            })
+            }),
+            # 'categories': forms.CheckboxSelectMultiple(attrs={
+            #     'class': 'form-control',
+            # })
         }
+
+
+class CategoryForm(forms.ModelForm):
+    class Meta:
+        model = Category
+        fields = '__all__'

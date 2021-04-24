@@ -15,4 +15,7 @@ class ReviewForm(forms.ModelForm):
                 'class': 'form-control',
                 'placeholder': 'review'
             }),
+            'book': forms.Select(attrs={
+                'class': 'form-control'
+            })
         }

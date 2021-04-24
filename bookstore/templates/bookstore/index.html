@@ -17,11 +17,11 @@
         {% for book in books%}
         <div class="col-md-3">
           <div class="card">
-          <img src="{{book.cover.url}}" class="card-img-top"/>
+            <img src="{{book.cover.url}}" class="card-img-top" />
             <div class="card-body">
               <h3>{{book.title}}</h3>
               <h4>SGD {{book.price}}</h3>
-              <a href={% url 'bookstore:show' book.id %}>Show</a>
+                <a href={% url 'bookstore:show' book.id %}>Show</a>
             </div>
           </div>
         </div>
