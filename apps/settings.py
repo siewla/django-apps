@@ -37,6 +37,7 @@ ALLOWED_HOSTS = ['django-az.herokuapp.com', '127.0.0.1']
 INSTALLED_APPS = [
     'index',
     'bookstore',
+    'reviews',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

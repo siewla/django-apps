@@ -2,14 +2,19 @@
 {% block body %}
 <div class="container">
   <div class="row">
-    <div class="col-md-6 mt-10">
+    <div class="col-md-6">
       {{book.title}}
-      <a href={% url 'show' book.id %}?action=edit>Edit</a>
-      <a href={% url 'show' book.id %}?action=del>Delete</a>
+      <a href={% url 'bookstore:show' book.id %}?action=edit>Edit</a>
+      <a href={% url 'bookstore:show' book.id %}?action=del>Delete</a>
+    </div>
+    <div>
+      <form action="" method="post">
+        {{review_form}}
+      </form>
     </div>
     {% if edit %}
     <div class="col-md-6">
-      <form action={% url 'show' book.id %}?action=edit method="post" enctype="multipart/form-data">
+      <form action={% url 'bookstore:show' book.id %}?action=edit method="post" enctype="multipart/form-data">
         {% csrf_token %} {{form}}
         <button type="submit" class="btn btn-outline-primary mt-2">
           Update Book
